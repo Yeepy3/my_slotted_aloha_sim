@@ -4,7 +4,7 @@ clear; clc;
 numNodes = 5;
 numSlots = 20;
 init_transmission_prob = 0.1;
-iteration = 79;
+iteration = 10;
 
 % test_initialization
 transmission_prob = zeros(1,iteration) + init_transmission_prob;

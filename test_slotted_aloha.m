@@ -78,39 +78,38 @@ function [success_rate] = test_slotted_aloha(numNodes, numSlots, transmission_pr
         else 
             % no collision
             fprintf('no collision at slot %d\n',slot);
-            % backoff timer not setting
+            % not setting the backoff timer
         end
         fprintf('Backoff-timer at the slot end: %s\n\n', sprintf('%d ', backoff_timer));
     end
 
     % fprintf('Attempt number: %d\n', sum(attempt_num));
     % fprintf('Success number: %d\n', success_num);
-    success_rate = (success_num / sum(attempt_num)) * 100;
+    success_rate = (success_num / sum(attempt_num)) * 100; % output of the function 
     fprintf('Efficiency: %.2f%%\n\n', success_rate);
 
     % show the transmission state diagram
+    figure;
+    subplot(2,1,1);
+    imagesc(transmission_state);
+    xlabel('Slot Time');
+    ylabel('Node');
+    xticks(0:1:numSlots);
+    yticks(0:1:numNodes);
 
-    % figure;
-    % subplot(2,1,1);
-    % imagesc(transmission_state);
-    % xlabel('Slot Time');
-    % ylabel('Node');
-    % xticks(0:1:numSlots);
-    % yticks(0:1:numNodes);
+    title('Transmission State');
+    colorbar;
+    grid on;
 
-    % title('Transmission State');
-    % colorbar;
-    % grid on;
-
-    % subplot(2,1,2);
-    % imagesc(success_state);
-    % xlabel('Slot Time');
-    % ylabel('Node');
-    % xticks(0:1:numSlots);
-    % yticks(0:1:numNodes);
-    % title('Success State');
-    % colorbar;
-    % grid on;
-    % sgtitle(sprintf('Transmit less than %.2f', transmission_prob));
+    subplot(2,1,2);
+    imagesc(success_state);
+    xlabel('Slot Time');
+    ylabel('Node');
+    xticks(0:1:numSlots);
+    yticks(0:1:numNodes);
+    title('Success State');
+    colorbar;
+    grid on;
+    sgtitle(sprintf('Transmit probability < %.2f', transmission_prob));
 
 end
