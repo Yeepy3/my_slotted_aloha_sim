@@ -1,3 +1,3 @@
 # my slotted ALOHA simulation
-1. slottedALOHA simulation w/ MATLAB \n
+1. slottedALOHA simulation w/ MATLAB
 2. Visualize transmission of nodes every slot times
